@@ -7,6 +7,11 @@ module.exports = merge(common, {
   devtool: "inline-source-map",
   target: "web",
   devServer: {
-    contentBase: "./dist",
+    static: {
+      directory: "./dist",
+      watch: true
+    },
+    watchFiles: ["*.html", "*.css"],
+    port: 9000,
   },
 });

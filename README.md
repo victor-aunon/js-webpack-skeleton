@@ -22,7 +22,7 @@ This is a repository intended to serve as a starting point if you want to bootst
 # install dependencies
 npm install
 
-# run in dev mode on port 8080
+# run in dev mode on port 9000
 npm run dev
 
 # generate production build
@@ -43,7 +43,7 @@ npm run test
 ### Cypress
 
 ```
-# run in dev mode on port 8080
+# run in dev mode on port 9000
 npm run dev
 
 # open Cypress to run tests on dev mode

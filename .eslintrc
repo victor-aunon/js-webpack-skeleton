@@ -6,13 +6,19 @@
   },
   "plugins": [
     "eslint-plugin-html",
+    "eslint-plugin-css-modules",
     "simple-import-sort",
     "import"
   ],
+  "settings": {
+    "html/report-bad-indent": "error"
+  },
   "extends": [
     "eslint:recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:css-modules/recommended"
   ],
+  "ignorePatterns": ["webpack.*.js", "/cypress/*", "/dist/*.js"],
   "rules": {
     "no-console": ["error", { "allow": ["error"] }],
     "no-var": "error",
@@ -27,6 +33,12 @@
     "simple-import-sort/exports": "error",
     "import/first": "error",
     "import/newline-after-import": "error",
-    "import/no-duplicates": "error"
+    "import/no-duplicates": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }

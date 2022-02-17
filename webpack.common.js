@@ -27,6 +27,21 @@ module.exports = {
         },
       },
       {
+        test: /\.s[ac]ss$/i,
+        use: [
+            'style-loader',
+            {
+                loader: "css-loader",
+            },
+            {
+                loader: 'sass-loader',
+                options: {
+                    sourceMap: true,
+                }
+              }
+          ],
+      },
+      {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },

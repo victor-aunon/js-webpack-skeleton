@@ -1,16 +1,26 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/js/index.js",
   output: {
-    filename: "main.js",
     path: path.resolve(__dirname, "dist"),
+    filename: '[name]_[fullhash].js',
     clean: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: "./src/index.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/home.pug",
+      filename: "home.html",
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: "./src/img/favicon/**/*", to: "" },
+      ],
     }),
   ],
   module: {
@@ -18,6 +28,10 @@ module.exports = {
       {
         test: /\.html$/i,
         loader: "html-loader",
+      },
+      {
+        test: /\.pug$/i,
+        use: ['html-loader', 'pug-html-loader'],
       },
       {
         test: /\.m?js$/,
@@ -48,6 +62,9 @@ module.exports = {
       {
         test: /\.(png|jpg|gif)$/i,
         type: "asset",
+        generator: {
+          filename: 'img/[name][ext]',
+      },
       },
     ],
   },

@@ -7,7 +7,9 @@ const common = require("./webpack.common.js");
 module.exports = merge(common, {
   mode: "production",
   devtool: "source-map",
-  plugins: [new MiniCssExtractPlugin()], // Creates a css files per each js file
+  plugins: [new MiniCssExtractPlugin({
+    filename: "[name]_[contenthash].css"
+  })], // Creates a css files per each js file
   module: {
     rules: [
       {

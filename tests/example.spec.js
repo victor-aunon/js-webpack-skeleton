@@ -3,13 +3,14 @@ import "@testing-library/jest-dom/extend-expect";
 
 import { getByText } from "@testing-library/dom";
 
-import { printUsers } from "../src/index";
+test("Test heading", () => {
+  const fs = require("fs");
+  const path = require("path");
+  const html = fs
+    .readFileSync(path.resolve((__dirname, "..", "src/index.html")))
+    .toString();
+  document.body.innerHTML = html;
+  const heading = getByText(document, "Hello world!");
 
-test("examples of some things", async () => {
-  const container = await printUsers();
-  document.body.appendChild(container);
-
-  const user = getByText(container, "Current users");
-
-  expect(user).toBeInTheDocument();
+  expect(heading).toBeInTheDocument();
 });
